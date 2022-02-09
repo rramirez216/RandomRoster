@@ -63,7 +63,7 @@ function App() {
       <Wrapper>
         {champions && randomChampion && <Champion champion={randomChampion} />}
       </Wrapper>
-      <button onClick={() => handleRandomChampion()}>random champion</button>
+      <Button onClick={() => handleRandomChampion()}>random champion</Button>
       <div>
         {tagsArray.map((value, index) => (
           <Radio key={index} value={value} handleRadio={handleRadio} />
@@ -76,5 +76,12 @@ function App() {
 const Wrapper = styled.div`
   color: green;
   font-size: 3rem;
+`
+const Button = styled.button`
+  background-color: white;
+
+  border-color: #9cd8a7;
+  padding: 8px 16px;
+  border-radius: 4px;
 `
 export default App
