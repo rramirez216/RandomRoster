@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const Checkbox = ({ handleRadio, value }) => {
   return (
-    <label htmlFor='radio'>
+    <Label htmlFor='radio'>
       {value}
       <input
         type='radio'
@@ -13,8 +13,10 @@ const Checkbox = ({ handleRadio, value }) => {
           handleRadio(value)
         }}
       />
-    </label>
+    </Label>
   )
 }
+
+const Label = styled.label``
 
 export default Checkbox
