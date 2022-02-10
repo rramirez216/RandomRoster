@@ -4,7 +4,7 @@ const GlobalStyles = createGlobalStyle`
   *, *::before, *::after {
     box-sizing: border-box;
   }
-  html, body {
+  html, body, #root {
     height: 100%;
   }
   img, picture, video, canvas, svg {
