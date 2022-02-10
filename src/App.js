@@ -59,29 +59,42 @@ function App() {
   }
 
   return (
-    <div>
+    <OuterWrapper>
       <Wrapper>
         {champions && randomChampion && <Champion champion={randomChampion} />}
       </Wrapper>
       <Button onClick={() => handleRandomChampion()}>random champion</Button>
-      <div>
+      <InputWrapper>
         {tagsArray.map((value, index) => (
           <Radio key={index} value={value} handleRadio={handleRadio} />
         ))}
-      </div>
+      </InputWrapper>
       <GlobalStyles />
-    </div>
+    </OuterWrapper>
   )
 }
+
+const OuterWrapper = styled.main`
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  gap: 32px;
+`
 const Wrapper = styled.div`
   color: green;
   font-size: 3rem;
 `
 const Button = styled.button`
+  max-width: 200px;
   background-color: white;
-
   border-color: #9cd8a7;
   padding: 8px 16px;
   border-radius: 4px;
 `
+const InputWrapper = styled.div`
+  display: flex;
+  gap: 16px;
+`
+
 export default App
