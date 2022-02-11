@@ -60,6 +60,7 @@ function App() {
 
   return (
     <OuterWrapper>
+      <HeadingOne>Random Champion Generator!</HeadingOne>
       <Wrapper>
         {champions && randomChampion && <Champion champion={randomChampion} />}
       </Wrapper>
@@ -76,10 +77,14 @@ function App() {
 
 const OuterWrapper = styled.main`
   height: 100%;
+  padding: 96px 32px 0;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   gap: 32px;
+`
+const HeadingOne = styled.h1`
+  font-size: 2.5rem;
 `
 const Wrapper = styled.div`
   color: green;
