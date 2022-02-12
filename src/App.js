@@ -37,13 +37,17 @@ function App() {
 
   const handleRandomChampion = () => {
     if (champions && filteredList) {
-      let randomNum = Math.floor(Math.random() * filteredList.length - 1)
+      let randomNum = Math.floor(Math.random() * filteredList.length)
       setRandomChampion(filteredList[randomNum])
-      return console.log(filteredList[randomNum].id)
+      return console.log(
+        filteredList[randomNum].id,
+        randomNum,
+        filteredList.length
+      )
     } else if (champions) {
-      let randomNum = Math.floor(Math.random() * champions.length - 1)
+      let randomNum = Math.floor(Math.random() * champions.length)
       setRandomChampion(champions[randomNum])
-      return console.log(champions[randomNum])
+      return console.log(champions[randomNum], randomNum, champions.length)
     }
   }
 
