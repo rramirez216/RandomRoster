@@ -81,18 +81,21 @@ function App() {
 
 const OuterWrapper = styled.main`
   height: 100%;
-  padding: 96px 32px 0;
+  padding: 96px 32px;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   gap: 32px;
+  overflow: scroll;
 `
 const HeadingOne = styled.h1`
   font-size: 2.5rem;
 `
 const Wrapper = styled.div`
+  max-width: 550px;
   color: green;
   font-size: 3rem;
+  text-align: center;
 `
 const Button = styled.button`
   max-width: 200px;
