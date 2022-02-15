@@ -101,6 +101,7 @@ const Button = styled.button`
   max-width: 200px;
   background-color: white;
   border-color: #9cd8a7;
+  border-style: solid;
   padding: 8px 16px;
   border-radius: 4px;
 `
