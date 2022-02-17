@@ -18,6 +18,7 @@ const Champion = ({ champion: { id, name, title } }) => {
 
 const Name = styled.p`
   font-size: 3rem;
+  margin: 16px 0;
 `
 const Title = styled.p`
   font-size: 1.5rem;
