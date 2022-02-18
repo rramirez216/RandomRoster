@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import styled from 'styled-components/macro'
-import GlobalStyles from './GlobalStyles'
+import './index.css'
 
+import GlobalStyles from './GlobalStyles'
 import Radio from './components/Radio'
 import Champion from './components/Champion'
 
@@ -65,7 +66,7 @@ function App() {
   return (
     <OuterWrapper>
       <HeadingOne>Random Champion Generator!</HeadingOne>
-      <Wrapper>
+      <Wrapper className='shadow'>
         {champions && randomChampion && <Champion champion={randomChampion} />}
       </Wrapper>
       <Button onClick={() => handleRandomChampion()}>random champion</Button>
@@ -92,10 +93,11 @@ const HeadingOne = styled.h1`
   font-size: 2.5rem;
 `
 const Wrapper = styled.div`
-  max-width: 550px;
+  max-width: 450px;
   color: green;
   font-size: 3rem;
   text-align: center;
+  box-shadow: --shadow-elevation-high;
 `
 const Button = styled.button`
   max-width: 200px;
