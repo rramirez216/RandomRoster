@@ -5,7 +5,7 @@ const Champion = ({ champion: { id, name, title } }) => {
   return (
     <>
       <div>
-        <img
+        <Image
           src={`http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${id}_0.jpg`}
           alt=''
         />
@@ -16,9 +16,13 @@ const Champion = ({ champion: { id, name, title } }) => {
   )
 }
 
+const Image = styled.img`
+  border-radius: 16px;
+`
+
 const Name = styled.p`
   font-size: 3rem;
-  margin: 16px 0;
+  margin: 32px 0 16px 0;
 `
 const Title = styled.p`
   font-size: 1.5rem;
