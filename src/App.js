@@ -97,7 +97,8 @@ const Wrapper = styled.div`
   color: green;
   font-size: 3rem;
   text-align: center;
-  box-shadow: --shadow-elevation-high;
+  padding: 64px 32px;
+  border-radius: 16px;
 `
 const Button = styled.button`
   max-width: 200px;
