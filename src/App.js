@@ -107,6 +107,7 @@ const Button = styled.button`
   border-style: solid;
   padding: 8px 16px;
   border-radius: 4px;
+  cursor: pointer;
 `
 const InputWrapper = styled.div`
   display: flex;
