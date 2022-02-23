@@ -86,7 +86,7 @@ const OuterWrapper = styled.main`
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  gap: 32px;
+  gap: 48px;
   overflow: scroll;
 `
 const HeadingOne = styled.h1`
