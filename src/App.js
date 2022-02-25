@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import styled from 'styled-components/macro'
+import { motion, AnimatePresence } from 'framer-motion'
 import './index.css'
 
 import GlobalStyles from './GlobalStyles'
@@ -69,7 +70,27 @@ function App() {
       <Wrapper className='shadow'>
         {champions && randomChampion && <Champion champion={randomChampion} />}
       </Wrapper>
-      <Button onClick={() => handleRandomChampion()}>random champion</Button>
+      <Button
+        whileHover={{
+          scale: 1.1,
+          transition: {
+            type: 'spring',
+            duration: 0.8,
+            bounce: 0.8,
+          },
+        }}
+        whileTap={{
+          scale: 0.9,
+          transition: {
+            type: 'spring',
+            duration: 0.8,
+            bounce: 0.8,
+          },
+        }}
+        onClick={() => handleRandomChampion()}
+      >
+        random champion
+      </Button>
       <InputWrapper>
         {tagsArray.map((value, index) => (
           <Radio key={index} value={value} handleRadio={handleRadio} />
@@ -100,7 +121,7 @@ const Wrapper = styled.div`
   padding: 64px 32px;
   border-radius: 16px;
 `
-const Button = styled.button`
+const Button = styled(motion.button)`
   max-width: 200px;
   background-color: white;
   border-color: #9cd8a7;
