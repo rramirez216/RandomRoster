@@ -88,6 +88,7 @@ function App() {
           },
         }}
         onClick={() => handleRandomChampion()}
+        className='shadow-low'
       >
         random champion
       </Button>
@@ -115,19 +116,22 @@ const HeadingOne = styled.h1`
 `
 const Wrapper = styled.div`
   max-width: 450px;
-  color: green;
+
   font-size: 3rem;
   text-align: center;
   padding: 64px 32px;
   border-radius: 16px;
 `
 const Button = styled(motion.button)`
+  font-family: 'PT Sans';
+  font-size: 1.1rem;
   max-width: 200px;
-  background-color: white;
-  border-color: #9cd8a7;
-  border-style: solid;
+  color: white;
+  background-color: hsl(131, 27%, 49%);
+  /* border-style: none; */
+  border: 2px solid black;
   padding: 8px 16px;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
 `
 const InputWrapper = styled.div`
