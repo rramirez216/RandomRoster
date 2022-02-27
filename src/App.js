@@ -12,6 +12,10 @@ function App() {
   const [champions, setChampions] = useState(null)
   const [randomChampion, setRandomChampion] = useState(null)
   const [filteredList, setFilteredList] = useState(null)
+  const [championId, setChampionId] = useState('')
+
+  const [skinList, setSkinList] = useState(null)
+  const [currentSkin, setCurrentSkin] = useState(0)
 
   const tagsArray = [
     'All',
@@ -37,19 +41,44 @@ function App() {
     fetchData()
   }, [])
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        let response = await axios(
+          `http://ddragon.leagueoflegends.com/cdn/12.4.1/data/en_US/champion/${championId}.json`
+        )
+        setSkinList(response.data.data[championId].skins)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    fetchData()
+  }, [championId])
+
   const handleRandomChampion = () => {
     if (champions && filteredList) {
       let randomNum = Math.floor(Math.random() * filteredList.length)
       setRandomChampion(filteredList[randomNum])
-      return console.log(
-        filteredList[randomNum].id,
-        randomNum,
-        filteredList.length
-      )
+      setChampionId(filteredList[randomNum].id)
+      // return console.log(
+      //   filteredList[randomNum].id,
+      //   randomNum,
+      //   filteredList.length
+      // )
     } else if (champions) {
       let randomNum = Math.floor(Math.random() * champions.length)
       setRandomChampion(champions[randomNum])
-      return console.log(champions[randomNum], randomNum, champions.length)
+      setChampionId(champions[randomNum].id)
+      // return console.log(champions[randomNum], randomNum, champions.length)
+    }
+  }
+
+  const handleSkinChange = () => {
+    if (skinList[skinList.length - 1].num === currentSkin) {
+      setCurrentSkin(0)
+    } else {
+      setCurrentSkin(skinList[currentSkin + 1].num)
+      console.log(currentSkin, skinList.length - 1, skinList[currentSkin].name)
     }
   }
 
@@ -66,9 +95,15 @@ function App() {
 
   return (
     <OuterWrapper>
-      <HeadingOne>Random Champion Generator!</HeadingOne>
+      <HeadingOne>Random Champion Generator</HeadingOne>
       <Wrapper className='shadow'>
-        {champions && randomChampion && <Champion champion={randomChampion} />}
+        {champions && randomChampion && (
+          <Champion
+            champion={randomChampion}
+            skinNumber={currentSkin}
+            handleSkinChange={handleSkinChange}
+          />
+        )}
       </Wrapper>
       <Button
         whileHover={{
@@ -87,7 +122,10 @@ function App() {
             bounce: 0.8,
           },
         }}
-        onClick={() => handleRandomChampion()}
+        onClick={() => {
+          handleRandomChampion()
+          setCurrentSkin(0)
+        }}
         className='shadow-low'
       >
         random champion
