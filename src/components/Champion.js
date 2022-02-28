@@ -11,7 +11,7 @@ const Champion = ({
       <div>
         <Image
           src={`http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${id}_${skinNumber}.jpg`}
-          alt=''
+          alt='splash art'
           onClick={handleSkinChange}
         />
       </div>
