@@ -23,6 +23,7 @@ const Champion = ({
 
 const Image = styled.img`
   border-radius: 16px;
+  cursor: pointer;
 `
 
 const Name = styled.p`
