@@ -1,13 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Champion = ({ champion: { id, name, title } }) => {
+const Champion = ({
+  champion: { id, name, title },
+  skinNumber,
+  handleSkinChange,
+}) => {
   return (
     <>
       <div>
         <Image
-          src={`http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${id}_0.jpg`}
+          src={`http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${id}_${skinNumber}.jpg`}
           alt=''
+          onClick={handleSkinChange}
         />
       </div>
       <Name>{name}</Name>
