@@ -16,6 +16,7 @@ function App() {
 
   const [skinList, setSkinList] = useState(null)
   const [currentSkin, setCurrentSkin] = useState(0)
+  const [skinListIndex, setSkinListIndex] = useState(0)
 
   const tagsArray = [
     'All',
@@ -76,9 +77,11 @@ function App() {
   const handleSkinChange = () => {
     if (skinList[skinList.length - 1].num === currentSkin) {
       setCurrentSkin(0)
+      setSkinListIndex(0)
     } else {
-      setCurrentSkin(skinList[currentSkin + 1].num)
-      console.log(currentSkin, skinList.length - 1, skinList[currentSkin].name)
+      setCurrentSkin(skinList[skinListIndex + 1].num)
+      setSkinListIndex(skinListIndex + 1)
+      console.log(currentSkin)
     }
   }
 
@@ -125,6 +128,7 @@ function App() {
         onClick={() => {
           handleRandomChampion()
           setCurrentSkin(0)
+          setSkinListIndex(0)
         }}
         className='shadow-low'
       >
