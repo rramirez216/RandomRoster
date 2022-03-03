@@ -18,6 +18,8 @@ function App() {
   const [currentSkin, setCurrentSkin] = useState(0)
   const [skinListIndex, setSkinListIndex] = useState(0)
 
+  const [selected, setSelected] = useState('All')
+
   const tagsArray = [
     'All',
     'Mage',
@@ -88,11 +90,13 @@ function App() {
   const handleRadio = (tag) => {
     if (tag === 'All') {
       setFilteredList(null)
+      setSelected(tag)
     } else {
       let filteredChampions = champions.filter((value) =>
         value.tags.includes(tag)
       )
       setFilteredList(filteredChampions)
+      setSelected(tag)
     }
   }
 
@@ -136,7 +140,12 @@ function App() {
       </Button>
       <InputWrapper>
         {tagsArray.map((value, index) => (
-          <Radio key={index} value={value} handleRadio={handleRadio} />
+          <Radio
+            key={index}
+            value={value}
+            handleRadio={handleRadio}
+            selected={selected}
+          />
         ))}
       </InputWrapper>
       <GlobalStyles />
