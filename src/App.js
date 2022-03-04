@@ -91,10 +91,12 @@ function App() {
     if (tag === 'All') {
       setFilteredList(null)
       setSelected(tag)
+      console.log(tag)
     } else {
       let filteredChampions = champions.filter((value) =>
         value.tags.includes(tag)
       )
+      console.log(tag)
       setFilteredList(filteredChampions)
       setSelected(tag)
     }
