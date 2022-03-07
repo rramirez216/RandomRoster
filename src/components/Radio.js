@@ -3,14 +3,14 @@ import styled from 'styled-components'
 
 const Checkbox = ({ handleRadio, value, selected }) => {
   return (
-    <Label htmlFor='radio'>
+    <Label>
       {value}
       <Input
         type='radio'
         id='radio'
         name='radio'
-        value={value}
         checked={selected === value}
+        value={value}
         onChange={(event) => {
           handleRadio(event.target.value)
         }}
