@@ -34,7 +34,7 @@ function App() {
     const fetchData = async () => {
       try {
         let response = await axios(
-          'http://ddragon.leagueoflegends.com/cdn/11.24.1/data/en_US/champion.json'
+          'https://ddragon.leagueoflegends.com/cdn/11.24.1/data/en_US/champion.json'
         )
         setChampions(Object.values(response.data.data))
       } catch (error) {
@@ -48,7 +48,7 @@ function App() {
     const fetchData = async () => {
       try {
         let response = await axios(
-          `http://ddragon.leagueoflegends.com/cdn/12.4.1/data/en_US/champion/${championId}.json`
+          `https://ddragon.leagueoflegends.com/cdn/12.4.1/data/en_US/champion/${championId}.json`
         )
         setSkinList(response.data.data[championId].skins)
       } catch (error) {
