@@ -104,7 +104,9 @@ function App() {
 
   return (
     <OuterWrapper>
-      <HeadingOne>Random Champion Generator</HeadingOne>
+      <Nav className='shadow'>
+        <HeadingOne>Random Champion Generator</HeadingOne>
+      </Nav>
       <Wrapper className='shadow'>
         {champions && randomChampion && (
           <Champion
@@ -156,16 +158,27 @@ function App() {
 }
 
 const OuterWrapper = styled.main`
+  position: relative;
   height: 100%;
   padding: 96px 32px;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+  justify-content: center;
   gap: 48px;
   overflow: scroll;
 `
+const Nav = styled.nav`
+  padding: 16px;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* border-bottom: 2px solid black; */
+`
 const HeadingOne = styled.h1`
-  font-size: 2.5rem;
+  font-size: 1.7rem;
 `
 const Wrapper = styled.div`
   max-width: 450px;
