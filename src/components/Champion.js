@@ -27,10 +27,12 @@ const Image = styled.img`
 `
 
 const Name = styled.p`
-  font-size: 3rem;
+  font-size: 1.8rem;
+  font-weight: 700;
   margin: 32px 0 16px 0;
 `
 const Title = styled.p`
+  color: hsl(201, 23%, 34%);
   font-size: 1.5rem;
 `
 
