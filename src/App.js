@@ -193,7 +193,6 @@ const Button = styled(motion.button)`
   color: white;
   background-color: hsl(131, 27%, 49%);
   border-style: none;
-  /* border: 2px solid black; */
   padding: 8px 16px;
   border-radius: 8px;
   cursor: pointer;
