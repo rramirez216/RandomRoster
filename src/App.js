@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
+import './index.css'
 import axios from 'axios'
 import styled from 'styled-components/macro'
 import { motion, AnimatePresence } from 'framer-motion'
-import './index.css'
 
 import GlobalStyles from './GlobalStyles'
 import Radio from './components/Radio'
@@ -104,7 +104,7 @@ function App() {
 
   return (
     <OuterWrapper>
-      <Nav className='shadow'>
+      <Nav>
         <HeadingOne>Random Champion Generator</HeadingOne>
       </Nav>
       <Wrapper className='shadow'>
@@ -175,15 +175,13 @@ const Nav = styled.nav`
   top: 0;
   left: 0;
   right: 0;
-  /* border-bottom: 2px solid black; */
+  border-bottom: 2px solid lightgrey;
 `
 const HeadingOne = styled.h1`
   font-size: 1.7rem;
 `
 const Wrapper = styled.div`
   max-width: 450px;
-
-  font-size: 3rem;
   text-align: center;
   padding: 64px 32px;
   border-radius: 16px;
@@ -194,8 +192,8 @@ const Button = styled(motion.button)`
   max-width: 200px;
   color: white;
   background-color: hsl(131, 27%, 49%);
-  /* border-style: none; */
-  border: 2px solid black;
+  border-style: none;
+  /* border: 2px solid black; */
   padding: 8px 16px;
   border-radius: 8px;
   cursor: pointer;
