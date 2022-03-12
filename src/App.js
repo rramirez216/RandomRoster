@@ -175,7 +175,6 @@ const Nav = styled.nav`
   top: 0;
   left: 0;
   right: 0;
-  border-bottom: 2px solid lightgrey;
 `
 const HeadingOne = styled.h1`
   font-size: 1.7rem;
