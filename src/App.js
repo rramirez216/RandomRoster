@@ -1,23 +1,28 @@
+// dependencies
 import React, { useState, useEffect } from 'react'
 import './index.css'
 import axios from 'axios'
 import styled from 'styled-components/macro'
 import { motion, AnimatePresence } from 'framer-motion'
-
+import useSound from 'use-sound'
+// components
 import GlobalStyles from './GlobalStyles'
 import Radio from './components/Radio'
 import Champion from './components/Champion'
+// assets
+import pop from './assets/audio/pop.wav'
 
 function App() {
+  // state for app
   const [champions, setChampions] = useState(null)
   const [randomChampion, setRandomChampion] = useState(null)
   const [filteredList, setFilteredList] = useState(null)
   const [championId, setChampionId] = useState('')
-
+  // state for skins image
   const [skinList, setSkinList] = useState(null)
   const [currentSkin, setCurrentSkin] = useState(0)
   const [skinListIndex, setSkinListIndex] = useState(0)
-
+  // state for radio
   const [selected, setSelected] = useState('All')
 
   const tagsArray = [
@@ -29,6 +34,8 @@ function App() {
     'Support',
     'Marksman',
   ]
+
+  const [play] = useSound(pop)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -63,11 +70,6 @@ function App() {
       let randomNum = Math.floor(Math.random() * filteredList.length)
       setRandomChampion(filteredList[randomNum])
       setChampionId(filteredList[randomNum].id)
-      // return console.log(
-      //   filteredList[randomNum].id,
-      //   randomNum,
-      //   filteredList.length
-      // )
     } else if (champions) {
       let randomNum = Math.floor(Math.random() * champions.length)
       setRandomChampion(champions[randomNum])
@@ -137,6 +139,9 @@ function App() {
           handleRandomChampion()
           setCurrentSkin(0)
           setSkinListIndex(0)
+          if (!(champions && randomChampion)) {
+            return play()
+          }
         }}
         className='shadow-low'
       >
