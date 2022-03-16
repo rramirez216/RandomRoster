@@ -18,6 +18,9 @@ function App() {
   const [randomChampion, setRandomChampion] = useState(null)
   const [filteredList, setFilteredList] = useState(null)
   const [championId, setChampionId] = useState('')
+  // state for wrapper
+  const [degrees, setDegrees] = useState(0)
+  const [showContent, setShowContent] = useState(false)
   // state for skins image
   const [skinList, setSkinList] = useState(null)
   const [currentSkin, setCurrentSkin] = useState(0)
@@ -36,6 +39,18 @@ function App() {
   ]
 
   const [play] = useSound(pop)
+
+  const variants = {
+    spin: { rotate: degrees, transition: { ease: 'backInOut', duration: 1 } },
+    disappear: {
+      opacity: [1, 0, 1],
+      transition: { ease: 'circOut', duration: 1 },
+    },
+    reappear: {
+      opacity: [1, 0, 1],
+      transition: { ease: 'circOut', duration: 1 },
+    },
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -66,16 +81,18 @@ function App() {
   }, [championId])
 
   const handleRandomChampion = () => {
-    if (champions && filteredList) {
-      let randomNum = Math.floor(Math.random() * filteredList.length)
-      setRandomChampion(filteredList[randomNum])
-      setChampionId(filteredList[randomNum].id)
-    } else if (champions) {
-      let randomNum = Math.floor(Math.random() * champions.length)
-      setRandomChampion(champions[randomNum])
-      setChampionId(champions[randomNum].id)
-      // return console.log(champions[randomNum], randomNum, champions.length)
-    }
+    setTimeout(() => {
+      if (champions && filteredList) {
+        let randomNum = Math.floor(Math.random() * filteredList.length)
+        setRandomChampion(filteredList[randomNum])
+        setChampionId(filteredList[randomNum].id)
+      } else if (champions) {
+        let randomNum = Math.floor(Math.random() * champions.length)
+        setRandomChampion(champions[randomNum])
+        setChampionId(champions[randomNum].id)
+        // return console.log(champions[randomNum], randomNum, champions.length)
+      }
+    }, 500)
   }
 
   const handleSkinChange = () => {
@@ -109,15 +126,15 @@ function App() {
       <Nav>
         <HeadingOne>Random Champion Generator</HeadingOne>
       </Nav>
-      <Wrapper className='shadow'>
-        {champions && randomChampion && (
-          <Champion
-            champion={randomChampion}
-            skinNumber={currentSkin}
-            handleSkinChange={handleSkinChange}
-          />
-        )}
-      </Wrapper>
+      {champions && randomChampion && (
+        <Champion
+          champion={randomChampion}
+          skinNumber={currentSkin}
+          handleSkinChange={handleSkinChange}
+          showContent={showContent}
+          variants={variants}
+        />
+      )}
       <Button
         whileHover={{
           scale: 1.1,
@@ -142,6 +159,8 @@ function App() {
           if (!(champions && randomChampion)) {
             return play()
           }
+          setDegrees(degrees + 360)
+          setShowContent(!showContent)
         }}
         className='shadow-low'
       >
@@ -184,12 +203,7 @@ const Nav = styled.nav`
 const HeadingOne = styled.h1`
   font-size: 1.7rem;
 `
-const Wrapper = styled.div`
-  max-width: 450px;
-  text-align: center;
-  padding: 64px 32px;
-  border-radius: 16px;
-`
+
 const Button = styled(motion.button)`
   font-family: 'PT Sans';
   font-size: 1.1rem;
