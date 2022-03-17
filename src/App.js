@@ -92,7 +92,7 @@ function App() {
         setChampionId(champions[randomNum].id)
         // return console.log(champions[randomNum], randomNum, champions.length)
       }
-    }, 500)
+    }, 300)
   }
 
   const handleSkinChange = () => {
@@ -160,7 +160,9 @@ function App() {
             return play()
           }
           setDegrees(degrees + 360)
-          setShowContent(!showContent)
+          if (champions || (champions && filteredList)) {
+            setShowContent(!showContent)
+          }
         }}
         className='shadow-low'
       >
