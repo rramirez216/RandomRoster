@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import './index.css'
 import axios from 'axios'
 import styled from 'styled-components/macro'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import useSound from 'use-sound'
 // components
 import GlobalStyles from './GlobalStyles'
@@ -21,6 +21,7 @@ function App() {
   // state for wrapper
   const [degrees, setDegrees] = useState(0)
   const [showContent, setShowContent] = useState(false)
+  const [allowOpacityAnimation, setAllowOpacityAnimation] = useState(0)
   // state for skins image
   const [skinList, setSkinList] = useState(null)
   const [currentSkin, setCurrentSkin] = useState(0)
@@ -42,6 +43,7 @@ function App() {
 
   const variants = {
     spin: { rotate: degrees, transition: { ease: 'backInOut', duration: 1 } },
+    grow: { scale: [0, 1] },
     disappear: {
       opacity: [1, 0, 1],
       transition: { ease: 'circOut', duration: 1 },
@@ -121,6 +123,10 @@ function App() {
     }
   }
 
+  const opacityAnimation = () => {
+    setAllowOpacityAnimation(allowOpacityAnimation + 1)
+  }
+
   return (
     <OuterWrapper>
       <Nav>
@@ -133,8 +139,10 @@ function App() {
           handleSkinChange={handleSkinChange}
           showContent={showContent}
           variants={variants}
+          allowOpacityAnimation={allowOpacityAnimation}
         />
       )}
+
       <Button
         whileHover={{
           scale: 1.1,
@@ -160,9 +168,8 @@ function App() {
             return play()
           }
           setDegrees(degrees + 360)
-          if (champions || (champions && filteredList)) {
-            setShowContent(!showContent)
-          }
+          setShowContent(!showContent)
+          opacityAnimation()
         }}
         className='shadow-low'
       >
