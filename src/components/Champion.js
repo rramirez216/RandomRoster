@@ -9,13 +9,15 @@ const Champion = ({
   handleSkinChange,
   showContent,
   variants,
+  allowOpacityAnimation,
 }) => {
+  let animation = ''
+  if (allowOpacityAnimation > 0) {
+    animation = showContent ? 'disappear' : 'reappear'
+  }
   return (
     <Wrapper className='shadow' variants={variants} animate={'spin'}>
-      <InnerWrapper
-        variants={variants}
-        animate={showContent ? 'disappear' : 'reappear'}
-      >
+      <InnerWrapper variants={variants} animate={animation}>
         <div>
           <Image
             src={`http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${id}_${skinNumber}.jpg`}
