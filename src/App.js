@@ -173,7 +173,7 @@ function App() {
         }}
         className='shadow-low'
       >
-        random champion
+        Random Champion
       </Button>
       <InputWrapper>
         {tagsArray.map((value, index) => (
