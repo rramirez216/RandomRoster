@@ -226,6 +226,8 @@ const Button = styled(motion.button)`
 `
 const InputWrapper = styled.div`
   display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
   gap: 16px;
 `
 
