@@ -37,6 +37,9 @@ const Wrapper = styled(motion.div)`
   text-align: center;
   padding: 64px 32px;
   border-radius: 16px;
+  @media (max-width: 480px) {
+    padding: 32px 16px;
+  }
 `
 const InnerWrapper = styled(motion.div)``
 const Image = styled.img`
