@@ -130,7 +130,7 @@ function App() {
   return (
     <OuterWrapper>
       <Nav>
-        <HeadingOne>Random Champion Generator</HeadingOne>
+        <HeadingOne>Random Champion Picker</HeadingOne>
       </Nav>
       {champions && randomChampion && (
         <Champion
